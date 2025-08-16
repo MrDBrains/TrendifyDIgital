@@ -1,0 +1,21 @@
+.module-header, .module-footer {
+  box-shadow: 0 0 5px #ccc;
+}
+
+.topic-header {
+  font-size: 1.1rem;
+}
+
+.accordion-button {
+  font-weight: 600;
+}
+
+.badge {
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.module-complete {
+  font-weight: 700;
+  font-size: 1rem;
+}

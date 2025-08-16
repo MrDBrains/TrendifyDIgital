@@ -1,0 +1,11 @@
+{
+  "name": "trendify-digital-fullstack",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently \"npm run dev --prefix TrendifyDigital_API\" \"npm start --prefix TrendifyDigital_UI\""
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.0"
+  }
+}

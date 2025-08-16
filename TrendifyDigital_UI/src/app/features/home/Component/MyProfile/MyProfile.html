@@ -1,0 +1,206 @@
+<div class="profile-container container mt-4">
+    <!-- Sidebar -->
+    <div class="sidebar col-lg-3 col-md-4">
+        <div class=" shadow-sm bg-white rounded text-center h-100">
+            <div class="profile-icon mb-3">
+                <i class="bi bi-person-circle"></i>
+            </div>
+            <div class="fw-bold fs-5">{{ user.name }}</div>
+            <div class="info"><strong>Enroll ID:</strong> {{ user.enrollId }}</div>
+            <div class="info"><strong>Registration:</strong> {{ user.registrationDate }}</div>
+            <div class="info"><strong>Course Code:</strong> {{ user.courseCode }}</div>
+            <div class="info"><strong>Batch Code:</strong> {{ user.batchCode }}</div>
+            <div class="info"><strong>Batch Timing:</strong> {{ user.batchTiming }}</div>
+            <div class="info mt-2"><i class="bi bi-phone"></i> {{ user.mobile }}</div>
+            <div class="info"><i class="bi bi-envelope"></i> {{ user.email }}</div>
+            <div class="info"><i class="bi bi-geo-alt"></i> {{ user.address }}</div>
+            <div class="info">{{ user.city }}</div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content col-lg-9 col-md-8">
+        <div class="card shadow-lg">
+           <div class="card-header text-white">
+  <ul class="nav nav-tabs flex-wrap custom-tabs">
+    <li class="nav-item">
+      <a class="nav-link active" data-bs-toggle="tab" href="#activity">My Activity</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-bs-toggle="tab" href="#edit">Edit Profile</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-bs-toggle="tab" href="#password">Change Password</a>
+    </li>
+  </ul>
+</div>
+
+          
+
+            <!-- Tab Content -->
+            <div class="card-body">
+                <div class="tab-content">
+
+                    <!-- activity tabs here -->
+                    <div class="tab-pane fade show active" id="activity">
+                        <div class="timeline">
+                            <div class="timeline-item" *ngFor="let activity of activityTimeline">
+                                
+                                <div class="timeline-date">{{ activity.date }}</div>
+                                <div class="timeline-content">
+                                    <h6>{{ activity.title }}</h6>
+                                    <p>{{ activity.details }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- edit tabs here -->
+                    <div class="tab-pane fade" id="edit">
+                        <form #profileForm="ngForm" class="container">
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label class="form-label">First Name</label>
+                                    <input type="text" class="form-control" [(ngModel)]="user.firstName"
+                                        name="firstName">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Last Name</label>
+                                    <input type="text" class="form-control" [(ngModel)]="user.lastName" name="lastName">
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label class="form-label">Email ID</label>
+                                    <input type="email" class="form-control" [(ngModel)]="user.email" name="email">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Mobile No.</label>
+                                    <input type="tel" class="form-control" [(ngModel)]="user.mobile" name="mobile">
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label class="form-label">DOB</label>
+                                    <input type="date" class="form-control" [(ngModel)]="user.dob" name="dob">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Gender</label><br>
+                                    <div class="form-check form-check-inline">
+                                        <input type="radio" class="form-check-input" [(ngModel)]="user.gender"
+                                            value="Male" name="gender">
+                                        <label class="form-check-label">Male</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input type="radio" class="form-check-input" [(ngModel)]="user.gender"
+                                            value="Female" name="gender">
+                                        <label class="form-check-label">Female</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label class="form-label">Address</label>
+                                    <textarea class="form-control" [(ngModel)]="user.address" name="address"></textarea>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">State</label>
+                                    <input type="text" class="form-control" [(ngModel)]="user.state" name="state">
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label class="form-label">Profile Picture</label>
+                                    <input type="file" class="form-control" (change)="onProfilePicSelected($event)">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Upload Resume</label>
+                                    <input type="file" class="form-control" (change)="onResumeSelected($event)">
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label class="form-label">Objective Of Doing Course</label>
+                                    <select class="form-select" [(ngModel)]="user.objective" name="objective">
+                                        <option value="">Select</option>
+                                        <option value="Placement">Placement</option>
+                                        <option value="Skill Development">Skill Development</option>
+                                        <option value="Higher Studies">Higher Studies</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Your Occupation</label>
+                                    <select class="form-select" [(ngModel)]="user.occupation" name="occupation">
+                                        <option value="">Select</option>
+                                        <option value="Student">Student</option>
+                                        <option value="Working Professional">Working Professional</option>
+                                        <option value="Business">Business</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label class="form-label">Company / Business Name</label>
+                                    <input type="text" class="form-control" [(ngModel)]="user.companyName"
+                                        name="companyName">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Designation</label>
+                                    <input type="text" class="form-control" [(ngModel)]="user.designation"
+                                        name="designation">
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-end">
+                                <button type="submit" class="btn btn-root-primary">Save</button>
+                            </div>
+
+
+                        </form>
+                    </div>
+
+                    <!-- password tabs here -->
+                    <div class="tab-pane fade" id="password">
+
+                        <div class="card shadow-sm" style="max-width: 500px; margin: auto;">
+                            <div class="card-header"
+                                style="background-color: var(--primary-color); color: white; font-weight: 600;">
+                                Change My Login Credentials
+                            </div>
+                            <div class="card-body p-4" style="background-color: var(--background-color);">
+                                <form>
+                                    <div class="row mb-3 align-items-center">
+                                        <label class="col-sm-4 col-form-label">Current Password</label>
+                                        <div class="col-sm-8">
+                                            <input type="password" class="form-control form-control-sm"
+                                                name="currentPassword" style="max-width: 300px;">
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3 align-items-center">
+                                        <label class="col-sm-4 col-form-label">New Password</label>
+                                        <div class="col-sm-8">
+                                            <input type="password" class="form-control form-control-sm"
+                                                name="newPassword" style="max-width: 300px;">
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-end">
+                                        <button type="submit" class="btn btn-root-primary">Change Password</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

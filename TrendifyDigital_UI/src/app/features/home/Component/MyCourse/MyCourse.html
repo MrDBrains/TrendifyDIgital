@@ -1,0 +1,42 @@
+<div class="course-title-box">
+  <h2 class="course-title-text">
+    Trendify Digital Certified Online Marketing Professional - PRO Version - DCOMPRO
+  </h2>
+</div>
+
+
+<div class="accordion-container">
+  <div class="accordion" *ngFor="let section of sections" (click)="toggleSection(section.id)"
+    [class.active]="activeSection === section.id">
+    <div class="accordion-header">
+      <div class="section-label">Section {{ section.id }} -</div>
+      <div class="section-title">{{ section.title }}</div>
+      <div class="modules-count">{{ section.modulesCount }} Modules</div>
+      <div class="icon-hand" title="Click to expand">👆</div>
+    </div>
+
+    <div class="accordion-body" *ngIf="activeSection === section.id">
+      <div class="module" *ngFor="let module of section.modules">
+        <div class="module-id">{{ module.id }}</div>
+
+        <div class="module-content">
+          <div class="module-title">{{ module.title }}</div>
+          <div class="module-details">{{ module.docsCount }} Docs, {{ module.videosCount }} Videos</div>
+        </div>
+
+        <button class="btn-status" [ngClass]="{
+      watch: module.status === 'watch',
+      resume: module.status === 'resume'
+          }" (click)="onModuleClick(module)" >
+          {{ module.status === 'watch' ? 'WATCH AGAIN...' : 'RESUME...' }}
+          <span class="arrow">➔</span>
+        </button>
+      </div>
+
+
+      <div *ngIf="section.levelComplete" class="level-complete">
+        ✔ Level - {{ section.id }} Complete
+      </div>
+    </div>
+  </div>
+</div>
