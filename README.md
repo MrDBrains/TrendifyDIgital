@@ -1,1 +1,2 @@
 "# TrendifyDIgitalBeta" 
+"# TrendifyDIgital" 
