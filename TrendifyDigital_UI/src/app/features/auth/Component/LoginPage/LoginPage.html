@@ -11,7 +11,7 @@
         <div class="login-content p-4">
             <h5 class="mb-4">Student Access Panel</h5>
 
-            <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+            <form [formGroup]="loginForm" (ngSubmit)="Login()">
                 <!-- Student ID -->
                 <div class="mb-3 text-start">
                     <div class="input-group">
@@ -47,7 +47,9 @@
 
                 </div>
             </form>
-
+            <div *ngIf="errorMessage" class="alert alert-danger mt-3 py-2">
+                {{ errorMessage }}
+            </div>
 
             <!-- Footer -->
             <div class="mt-4 text-muted small">

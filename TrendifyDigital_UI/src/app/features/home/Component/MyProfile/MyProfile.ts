@@ -57,14 +57,20 @@ export class MyProfile implements OnInit {
 
   constructor(private studentService: StudentService) { }
 
-  ngOnInit(): void {
-    this.studentProfile = history.state.profile as IStudentProfileDTO;
-    console.log(this.studentProfile, 'Student Profile sdfs');
+ngOnInit(): void {
+  const profileStr = sessionStorage.getItem('studentProfile');
 
-    if (this.studentProfile) {
-      this.loadProfileData();
-    }
+  if (profileStr) {
+    this.studentProfile = JSON.parse(profileStr) as IStudentProfileDTO;
+    console.log('Student Profile from session:', this.studentProfile);
+    this.loadProfileData();
+  } else {
+    console.warn('No student profile found in session, redirecting to login');
   }
+}
+
+
+  
   loadProfileData() {
     const profile = this.studentProfile!;
 

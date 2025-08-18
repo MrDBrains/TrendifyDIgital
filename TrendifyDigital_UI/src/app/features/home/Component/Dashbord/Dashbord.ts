@@ -34,17 +34,19 @@ export class Dashbord implements OnInit {
     private studentService: StudentService
   ) { }
 
-  ngOnInit(): void {
-    this.studentProfile = history.state.profile as IStudentProfileDTO;
-
-    if (!this.studentProfile) {
-      console.warn('No student profile found. Redirecting to login.');
-      this.router.navigate(['/login']);
-    } else {
-      this.loadProfileData();
-      this.loadInstallmentsData();
-    }
+ngOnInit(): void {
+  const profileStr = sessionStorage.getItem('studentProfile');
+  if (!profileStr) {
+    console.warn('No student profile found. Redirecting to login.');
+    this.router.navigate(['/login']);
+    return;
   }
+  this.studentProfile = JSON.parse(profileStr) as IStudentProfileDTO;
+
+  this.loadProfileData();
+  this.loadInstallmentsData();
+}
+
 
   // Map DTO to user object
   loadProfileData() {

@@ -1,6 +1,6 @@
 <!-- Header Navbar -->
 <nav class="navbar navbar-expand-lg navbar-dark header-bg px-3 shadow-sm">
-    <a class="navbar-brand fw-bold text-white" href="#">Trendify Digital</a>
+    <a class="navbar-brand fw-bold text-white" >Trendify Digital</a>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
         <span class="navbar-toggler-icon"></span>
@@ -15,10 +15,10 @@
                 <a class="nav-link text-white fw-bold" routerLink="/home/myCource">Topic Library</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white fw-bold" href="#">Personality Development</a>
+                <a class="nav-link text-white fw-bold">Personality Development</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white fw-bold" href="#">Digital Diagnostic</a>
+                <a class="nav-link text-white fw-bold">Digital Diagnostic</a>
             </li>
 
             <!-- More Dropdown -->
@@ -29,16 +29,18 @@
                     More
                 </a>
                 <ul class="dropdown-menu shadow-sm border-0">
-                    <li><a class="dropdown-item" href="#">Buy Web Hosting / Domain</a></li>
-                    <li><a class="dropdown-item" href="#">DM Certification Guide</a></li>
-                    <li><a class="dropdown-item" href="#">News & Updates</a></li>
-                    <li><a class="dropdown-item active" href="#">Interview FAQ's</a></li>
-                    <li><a class="dropdown-item" href="#">Final Exam</a></li>
-                    <li><a class="dropdown-item" href="#">Class Feedback</a></li>
+                    <li><a class="dropdown-item">Buy Web Hosting / Domain</a></li>
+                    <li><a class="dropdown-item">DM Certification Guide</a></li>
+                    <li><a class="dropdown-item">News & Updates</a></li>
+                    <li><a class="dropdown-item active">Interview FAQ's</a></li>
+                    <li><a class="dropdown-item">Final Exam</a></li>
+                    <li><a class="dropdown-item">Class Feedback</a></li>
                     <li>
                         <hr class="dropdown-divider">
                     </li>
-                    <li><a class="dropdown-item text-danger" href="#">Sign out</a></li>
+                    <li>
+                        <a class="dropdown-item text-danger" (click)="signOut()">Sign out</a>
+                    </li>
                 </ul>
             </li>
 
@@ -60,14 +62,15 @@
 
                 <div class="fw-bold">{{ studentName }}</div>
                 <div class="text-muted small">Center - BSB</div>
-                <div class="text-muted" style="font-size: 12px;">Registration Date {{registrationDate | date: 'shortDate'}}</div>
+                <div class="text-muted" style="font-size: 12px;">Registration Date {{registrationDate | date:
+                    'shortDate'}}</div>
                 <hr>
                 <div class="d-flex justify-content-between">
                     <a class="btn btn-outline-secondary btn-sm w-50 me-1" (click)="goToProfile()">
                         <i class="bi bi-gear me-1"></i> My Profile
                     </a>
                     <a class="btn btn-outline-danger btn-sm w-50 ms-1" routerLink="/login">
-                        <i class="bi bi-box-arrow-right me-1"></i> Sign out
+                        <i class="bi bi-box-arrow-right me-1" (click)="signOut()"></i> Sign out
                     </a>
                 </div>
             </ul>
@@ -77,5 +80,5 @@
 
 <!-- Main Page Content -->
 <div class="p-3">
-    <router-outlet></router-outlet>
+   <router-outlet></router-outlet>
 </div>

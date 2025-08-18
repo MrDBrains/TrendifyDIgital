@@ -17,14 +17,21 @@ export class HomePage implements OnInit {
   registrationDate: any;
 
   constructor(private studentService: StudentService,
-     private router: Router,
+    private router: Router,
   ) { }
 
-  ngOnInit(): void {
-    this.studentProfile = history.state.profile as IStudentProfileDTO;
-    console.log('Student Profile:', this.studentProfile);
-    this.loadProfile();
+ ngOnInit(): void {
+  const profileStr = sessionStorage.getItem('studentProfile');
+
+  if (profileStr) {
+    this.studentProfile = JSON.parse(profileStr) as IStudentProfileDTO;
+    console.log('Student Profile (from session):', this.studentProfile);
+  } else {
+    console.warn('No profile found in sessionStorage');
   }
+
+  this.loadProfile();
+}
 
   loadProfile() {
     if (this.studentProfile) {
@@ -40,4 +47,13 @@ export class HomePage implements OnInit {
       console.warn('No student profile available to pass');
     }
   }
+  signOut(): void {
+    localStorage.clear();
+    sessionStorage.clear();
+    this.studentProfile = null;
+    this.router.navigate(['/login']);
+  }
+
+
+
 }

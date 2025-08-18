@@ -2,14 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { IStudentProfileDTO } from '../../../../core/DTOs/IStudentProfileDTO';
-import { StudentService } from '../../../home/Service/student.service';
 import { AuthService } from '../../service/auth.service';
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-LoginPage',
   standalone: false,
   templateUrl: './LoginPage.html',
-  styleUrls: ['./LoginPage.css'] // corrected property name
+  styleUrls: ['./LoginPage.css']
 })
 export class LoginPage implements OnInit {
   loginForm!: FormGroup;
@@ -32,7 +33,7 @@ export class LoginPage implements OnInit {
     });
   }
 
-  onLogin(): void {
+  Login(): void {
     if (this.loginForm.invalid) {
       this.loginForm.markAllAsTouched();
       return;
@@ -40,10 +41,58 @@ export class LoginPage implements OnInit {
 
     const { studentId, password } = this.loginForm.value;
 
-    this.fetchProfile(studentId)
-      .then(profile => this.performLogin(studentId, password, profile))
-      .catch(err => this.errorMessage = err);
+    this.authService.login(studentId, password).subscribe({
+      next: (response) => {
+        const student = response?.student;
+
+        if (student && student.Success === 1) {
+          // ✅ Success toast
+          Swal.fire({
+            toast: true,
+            icon: 'success',
+            title: 'Login successful',
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 2000,
+            timerProgressBar: true
+          });
+
+          // Navigate after short delay
+          setTimeout(() => {
+            this.fetchProfile(studentId).then(profile => {
+              this.router.navigate(['/home'], { state: { profile } });
+            });
+          }, 2000);
+
+        } else {
+          // 🔴 Error toast
+          Swal.fire({
+            toast: true,
+            icon: 'error',
+            title: student?.Message || 'Wrong student ID or password',
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true
+          });
+        }
+      },
+      error: (err) => {
+        Swal.fire({
+          toast: true,
+          icon: 'error',
+          title: err.error?.message || 'Server error, please try again later.',
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true
+        });
+      }
+    });
   }
+
+
+
 
   private fetchProfile(studentId: string): Promise<IStudentProfileDTO> {
     return new Promise((resolve, reject) => {
@@ -53,12 +102,19 @@ export class LoginPage implements OnInit {
             reject('Profile not found');
             return;
           }
-          resolve(this.mapToDTO(profile));
+
+          const dto = this.mapToDTO(profile);
+
+          // ✅ Save to sessionStorage
+          sessionStorage.setItem('studentProfile', JSON.stringify(dto));
+
+          resolve(dto);
         },
         error: (err) => reject(err.error?.message || 'Error fetching profile')
       });
     });
   }
+
 
   private mapToDTO(profile: any): IStudentProfileDTO {
     return {
@@ -88,19 +144,5 @@ export class LoginPage implements OnInit {
       BatchCode: profile.BatchCode || null,
       BatchTiming: profile.BatchTiming || null
     };
-  }
-
-  private performLogin(studentId: string, password: string, profile: IStudentProfileDTO): void {
-    this.authService.login(studentId, password).subscribe({
-      next: (res) => {
-        if (res.success) {
-          localStorage.setItem('token', res.token || 'loggedin');
-          this.router.navigate(['/home'], { state: { profile } });
-        } else {
-          this.errorMessage = res.message || 'Login failed';
-        }
-      },
-      error: (err) => this.errorMessage = err.error?.message || 'Server error'
-    });
   }
 }

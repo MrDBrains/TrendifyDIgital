@@ -6,7 +6,6 @@ import { Dashbord } from './features/home/Component/Dashbord/Dashbord';
 import { MyCourse } from './features/home/Component/MyCourse/MyCourse';
 import { ViewModule } from './features/home/Component/ViewModule/ViewModule';
 import { MyProfile } from './features/home/Component/MyProfile/MyProfile';
-import { AuthGuard } from './core/guards/auth.guard';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -15,8 +14,6 @@ export const routes: Routes = [
   {
     path: 'home',
     component: HomePage,
-    canActivate: [AuthGuard],     
-    canActivateChild: [AuthGuard],  
     children: [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
       { path: 'dashboard', component: Dashbord },
