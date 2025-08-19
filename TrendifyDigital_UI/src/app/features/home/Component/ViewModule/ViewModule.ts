@@ -30,4 +30,22 @@ export class ViewModule {
       ]
     }
   ];
+
+   getIcon(type: string): string {
+    switch (type.toUpperCase()) {
+      case 'PDF': return 'bi bi-file-earmark-pdf';
+      case 'VIDEO': return 'bi bi-camera-video';
+      case 'QUIZ': return 'bi bi-question-circle';
+      default: return 'bi bi-file-earmark';
+    }
+  }
+
+  getColor(type: string): string {
+    switch (type.toUpperCase()) {
+      case 'PDF': return '#007bff';       // Blue
+      case 'VIDEO': return '#dc3545';     // Red
+      case 'QUIZ': return '#6c757d';      // Gray
+      default: return '#333';
+    }
+  }
 }
