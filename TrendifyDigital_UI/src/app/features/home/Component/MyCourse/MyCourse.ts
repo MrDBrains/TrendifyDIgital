@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-my-course',
@@ -9,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class MyCourse {
   activeSection: number | null = null;
-   userAccessibleSections: number[] = [1, 2, 3, 7];
+   userAccessibleSections: number[] = [5, 2, 3, 7];
 
   sectionsData = [
     {
@@ -99,6 +101,24 @@ export class MyCourse {
 
   constructor(private router: Router) { }
 
+
+  handleSectionClick(sectionId: number) {
+    if (!this.userAccessibleSections.includes(sectionId)) {
+      Swal.fire({
+        toast: true,
+        icon: 'error',
+        title: 'This section is not accessible for you.',
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true
+      });
+      return;
+    }
+
+    this.activeSection = this.activeSection === sectionId ? null : sectionId;
+  }
+
   toggleSection(id: number) {
     this.activeSection = this.activeSection === id ? null : id;
   }
@@ -107,7 +127,15 @@ export class MyCourse {
     if (this.userAccessibleSections.includes(sectionId)) {
       this.router.navigate(['/home/view-module'], { queryParams: { id: module.id } });
     } else {
-      alert('This section is not accessible for you.');
+      Swal.fire({
+        toast: true,
+        icon: 'error',
+        title: 'This section is not accessible for you.',
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true
+      });
     }
   }
 
