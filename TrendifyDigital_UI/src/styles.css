@@ -1,4 +1,4 @@
-:root {
+/* :root {
   --primary-color: #2C3E50;      
   --secondary-color: #E67E22;    
   --accent-color: #1ABC9C;       
@@ -25,11 +25,11 @@
   --btn-padding-x: 1.75rem;
 
   --box-shadow-login: 0 0 25px rgba(0, 0, 0, 0.1);
-}
+} */
 
 
 
-/* :root {
+ /* :root {
   --primary-color: #1E2A78;
   --secondary-color: #FF6F61;
   --accent-color: #FFC845;
@@ -51,6 +51,29 @@
   --btn-height: 45px;
   --btn-padding-x: 1.5rem;
   --box-shadow-login: 0 0 20px rgba(0, 0, 0, 0.15);
-} */
+}  */
 
 
+:root {
+  --primary-color: #4B6CB7;
+  --secondary-color: #FF6B6B;
+  --accent-color: #FFD93D;
+  --background-color: #F4F7FA;
+  --text-primary: #222222;
+  --text-secondary: #555555;
+
+  --background-image-url: url('https://images.unsplash.com/photo-1521791136064-7986c2920216');
+
+  --login-bg-color: rgba(255, 255, 255, 0.8);
+  --logo-bar-bg: #4B6CB7;       
+  --logo-bar-bg-hover: #3A549B; 
+  --input-group-bg: #EFEFEF;
+  --btn-warning-bg: #FF6B6B;
+  --btn-warning-bg-hover: #FF4C4C;
+  --btn-warning-color: #FFFFFF;
+  --btn-border-radius: 6px;
+  --input-height: 45px;
+  --btn-height: 48px;
+  --btn-padding-x: 1.5rem;
+  --box-shadow-login: 0 8px 25px rgba(0, 0, 0, 0.2); 
+}

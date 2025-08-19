@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 export class MyCourse {
   activeSection: number | null = null;
 
-  sections = [
+  sectionsData = [
     {
       id: 1,
       title: 'Marketing & Web Presence Foundation',
@@ -29,12 +29,12 @@ export class MyCourse {
       title: 'Online Business Visibility Creation',
       modulesCount: 6,
       modules: [
-        { id: 6, title: 'M1 Business Basics', docsCount: 3, videosCount: 4, status: 'watch' },
-        { id: 7, title: 'M2 Website Optimization', docsCount: 2, videosCount: 3, status: 'watch' },
-        { id: 8, title: 'M3 Social Media Setup', docsCount: 3, videosCount: 3, status: 'watch' },
-        { id: 9, title: 'M4 SEO Foundations', docsCount: 4, videosCount: 4, status: 'watch' },
-        { id: 10, title: 'M5 Content Marketing', docsCount: 2, videosCount: 3, status: 'watch' },
-        { id: 11, title: 'M6 Email Marketing', docsCount: 2, videosCount: 3, status: 'resume' }
+        { id: 6, title: 'M6 Graphic Designing For Business', docsCount: 2, videosCount: 9, status: 'watch' },
+        { id: 7, title: 'M7 Video Marketing For Business', docsCount: 2, videosCount: 4, status: 'watch' },
+        { id: 8, title: 'M8 Building Your Business Website', docsCount: 0, videosCount: 10, status: 'watch' },
+        { id: 9, title: 'M9 Social Media Optmization For Business', docsCount: 11, videosCount: 20, status: 'watch' },
+        { id: 10, title: 'M10 Search Engine Optimization', docsCount: 6, videosCount: 12, status: 'watch' },
+        { id: 11, title: 'M11 Web Analytics & Traffic Reporting', docsCount: 1, videosCount: 4, status: 'resume' }
       ],
       levelComplete: false
     },
@@ -43,11 +43,11 @@ export class MyCourse {
       title: 'Lead Generation',
       modulesCount: 5,
       modules: [
-        { id: 12, title: 'M1 Lead Capture', docsCount: 3, videosCount: 3, status: 'watch' },
-        { id: 13, title: 'M2 Landing Pages', docsCount: 2, videosCount: 2, status: 'watch' },
-        { id: 14, title: 'M3 PPC Campaigns', docsCount: 3, videosCount: 3, status: 'resume' },
-        { id: 15, title: 'M4 Lead Magnets', docsCount: 3, videosCount: 3, status: 'watch' },
-        { id: 16, title: 'M5 CRM Basics', docsCount: 2, videosCount: 3, status: 'watch' }
+        { id: 12, title: 'M12 Introduction to Lead Generation', docsCount: 1, videosCount: 1, status: 'watch' },
+        { id: 13, title: 'M13 Online Advertising & Google Ads', docsCount: 2, videosCount: 9, status: 'watch' },
+        { id: 14, title: 'M14 Display Advertising', docsCount: 1, videosCount: 4, status: 'resume' },
+        { id: 15, title: 'M15 Video Advertising', docsCount: 1, videosCount: 2, status: 'watch' },
+        { id: 16, title: 'M16 Facebook Advertising', docsCount: 4, videosCount: 0, status: 'watch' }
       ],
       levelComplete: false
     },
@@ -56,10 +56,10 @@ export class MyCourse {
       title: 'Lead Nurturing',
       modulesCount: 4,
       modules: [
-        { id: 17, title: 'M1 Email Sequences', docsCount: 3, videosCount: 2, status: 'watch' },
-        { id: 18, title: 'M2 Retargeting', docsCount: 3, videosCount: 3, status: 'watch' },
-        { id: 19, title: 'M3 Content Strategy', docsCount: 2, videosCount: 2, status: 'watch' },
-        { id: 20, title: 'M4 Analytics', docsCount: 3, videosCount: 3, status: 'resume' }
+        { id: 17, title: 'M17 Email Marketing', docsCount: 5, videosCount: 6, status: 'watch' },
+        { id: 18, title: 'M18 Remarketing & Rebranding', docsCount: 3, videosCount: 5, status: 'watch' },
+        { id: 19, title: 'M19 Inbound Marketing', docsCount: 1, videosCount: 1, status: 'watch' },
+        { id: 20, title: 'M20 Web Content Writing', docsCount: 3, videosCount: 3, status: 'resume' }
       ],
       levelComplete: false
     },
@@ -68,10 +68,10 @@ export class MyCourse {
       title: 'Personal Branding & Online Earning',
       modulesCount: 4,
       modules: [
-        { id: 21, title: 'M1 Email Sequences', docsCount: 3, videosCount: 2, status: 'watch' },
-        { id: 22, title: 'M2 Retargeting', docsCount: 3, videosCount: 3, status: 'watch' },
-        { id: 23, title: 'M3 Content Strategy', docsCount: 2, videosCount: 2, status: 'watch' },
-        { id: 24, title: 'M4 Analytics', docsCount: 3, videosCount: 3, status: 'resume' }
+        { id: 21, title: 'M21 Personal Branding & Influencer Marketing', docsCount: 1, videosCount: 0, status: 'watch' },
+        { id: 22, title: 'M22 Affiliate Marketing & Google Adsense', docsCount: 3, videosCount: 4, status: 'watch' },
+        { id: 23, title: 'M23 Digital Marketing Freelancing', docsCount: 1, videosCount: 1, status: 'watch' },
+        { id: 24, title: 'M24 E-Commerce & Marketing Place', docsCount: 4, videosCount: 20, status: 'resume' }
       ],
       levelComplete: false
     },
@@ -81,7 +81,7 @@ export class MyCourse {
       title: 'Interview Preparation',
       modulesCount: 1,
       modules: [
-        { id: 25, title: 'M1 Interview Basics', docsCount: 2, videosCount: 1, status: 'watch' }
+        { id: 25, title: 'M25 Digital Marketing Interview Prepration', docsCount: 4, videosCount: 2, status: 'watch' }
       ],
       levelComplete: false
     },
@@ -90,7 +90,7 @@ export class MyCourse {
       title: 'Pro Version - Master Class',
       modulesCount: 1,
       modules: [
-        { id: 26, title: 'M1 Interview Basics', docsCount: 2, videosCount: 1, status: 'watch' }
+        { id: 26, title: 'M126 Master Class', docsCount: 0, videosCount: 5, status: 'watch' }
       ],
       levelComplete: false
     }

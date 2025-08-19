@@ -49,28 +49,7 @@
   background-color: var( --btn-warning-bg-hover);
 }
 
-/* Progress Circle */
-.progress-circle {
-  position: relative;
-  width: 80px;
-  height: 80px;
-  margin: 0 auto 1rem;
-  border-radius: 50%;
-  background: conic-gradient(
-    var(--accent-color) calc(var(--progress, 0) * 1%),
-    var(--light-gray) 0
-  );
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 
-.progress-value {
-  position: absolute;
-  font-weight: 700;
-  font-size: 1.3rem;
-  color: var(--accent-color);
-}
 
 /* Headings & Typography */
 h5, .table th {
@@ -109,7 +88,28 @@ h5, .table th {
   }
 }
 
+/* Progress Circle */
+.progress-circle {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 1rem;
+  border-radius: 50%;
+  background: conic-gradient(
+    var(--accent-color) calc(var(--progress, 0) * 1%),
+    var(--light-gray) 0
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
+.progress-value {
+  position: absolute;
+  font-weight: 700;
+  font-size: 1.3rem;
+  color: var(--accent-color);
+}
 
 
 .donut-chart {

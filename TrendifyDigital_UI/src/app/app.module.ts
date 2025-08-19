@@ -15,6 +15,7 @@ import { MyProfile } from './features/home/Component/MyProfile/MyProfile';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { SignupPage } from './features/auth/Component/SignupPage/SignupPage';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
 
 @NgModule({
   declarations: [
@@ -33,8 +34,8 @@ import { SignupPage } from './features/auth/Component/SignupPage/SignupPage';
     ReactiveFormsModule,
     CommonModule,
     FormsModule,
-    HttpClientModule
-  
+    HttpClientModule,
+    PdfViewerModule,
 ],
   bootstrap: [AppComponent]
 })

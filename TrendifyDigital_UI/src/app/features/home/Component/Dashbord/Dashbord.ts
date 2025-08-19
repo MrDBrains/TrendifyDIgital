@@ -29,6 +29,15 @@ export class Dashbord implements OnInit {
     enrollId: string;
   }> = [];
 
+   batch = {
+    number: 'BSB2261',
+    timing: '19:30',
+    weekdays: ['Mon', 'Wed', 'Fri'],
+    address: '7-B-27/70, Anupam Apartment, Durgakund Road Bhelupur, Varanasi, U.P.',
+    phones: ['7394831111', '7394832222'],
+    email: 'info@digitalkarigar.com'
+  };
+
   constructor(
     private router: Router,
     private studentService: StudentService

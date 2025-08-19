@@ -41,13 +41,13 @@
 
   <!-- Progress Section -->
   <div class="border rounded p-4 mb-4">
-    <div class="d-flex justify-content-center">
+    <!-- <div class="d-flex justify-content-center">
       <button class="btn refresh-btn mb-3 text-white d-flex align-items-center gap-2" [disabled]="isLoading"
         (click)="refreshProgress()">
         Refresh Progress Chart... <span *ngIf="isLoading" class="spinner-border spinner-border-sm text-light"
           role="status" aria-hidden="true"></span>
       </button>
-    </div>
+    </div> -->
 
 
     <div class="d-flex justify-content-around text-center flex-wrap gap-3">
@@ -77,7 +77,7 @@
 
 
   <!-- Payment Details -->
-  <div class="payment-section p-3 rounded">
+  <div class="payment-section p-3 mb-4 rounded">
     <h5 class="text-white"><strong>₹ Course Fee / Due Instalments</strong></h5>
     <div class="table-responsive">
       <table class="table table-hover table-bordered mb-0">
@@ -107,4 +107,44 @@
     </div>
 
   </div>
+
+  <!-- Center / Batch Info -->
+  <div class="payment-section p-3 rounded">
+    
+    <h5 class="text-white"><strong><i class="bi bi-info"></i>Your Center / Batch info.</strong></h5>
+    <div class="table-responsive">
+      <table class="table table-hover table-bordered mb-0">
+        <tbody>
+          <tr>
+            <th class="label">Batch No.</th>
+            <td class="value">{{ batch.number }}</td>
+          </tr>
+          <tr>
+            <th class="label">Timing</th>
+            <td class="value"><i class="far fa-clock"></i> {{ batch.timing }}</td>
+          </tr>
+          <tr>
+            <th class="label">Week Days</th>
+            <td class="value">{{ batch.weekdays.join(', ') }}</td>
+          </tr>
+          <tr>
+            <th class="label">Center Address</th>
+            <td class="value">{{ batch.address }}</td>
+          </tr>
+          <tr>
+            <th class="label">Contact</th>
+            <td class="value">
+              <i class="fas fa-phone"></i> {{ batch.phones.join(', ') }} <br>
+              <i class="fas fa-envelope"></i> {{ batch.email }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+
+
+
+
 </div>

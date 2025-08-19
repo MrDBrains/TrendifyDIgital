@@ -12,8 +12,7 @@ export class ViewModule {
     {
       id: 1,
       title: 'History Of Marketing',
-      color: '#f59e0b', // orange
-      icon: 'bi bi-file-earmark-text-fill', // PDF icon
+      icon: 'bi bi-file-earmark-text-fill',
       rows: [
         { id: 1, title: 'History Of Marketing', type: 'PDF', link: '#' },
         { id: 2, title: 'History Of Marketing-Marketing Basics', type: 'VIDEO', link: '#' },
@@ -23,7 +22,6 @@ export class ViewModule {
     {
       id: 2,
       title: 'Traditional Vs. Digital Marketing',
-      color: '#f59e0b',
       icon: 'bi bi-file-earmark-text-fill',
       rows: [
         { id: 4, title: 'Traditional Vs. Digital Marketing', type: 'PDF', link: '#' },

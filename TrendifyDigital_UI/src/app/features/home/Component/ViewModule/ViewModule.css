@@ -1,21 +1,109 @@
+body {
+  background-color: var(--background-color);
+  color: var(--text-primary);
+}
+
 .module-header, .module-footer {
+  background-color: var(--background-color);
   box-shadow: 0 0 5px #ccc;
 }
 
+/* Topic header styling */
 .topic-header {
+  background-color: var(--primary-color);
   font-size: 1.1rem;
 }
 
-.accordion-button {
-  font-weight: 600;
+/* Accordion item styling */
+.accordion-item {
+  position: relative;
+  margin-left: 4rem; /* default spacing from vertical line */
+  margin-bottom: 5px; /* gap between items */
+  border: 1px solid #ccc;
+  border-radius: 0; /* square borders */
+  overflow: hidden;
+  background-color: #fff;
 }
 
+/* Accordion button styling */
+.accordion-button {
+  font-weight: 600;
+  color: var(--text-primary);
+  border-radius: 0; /* square */
+  width: 100%;
+}
+
+/* Badge styling */
 .badge {
   font-size: 0.8rem;
   cursor: pointer;
 }
 
+.accordion-header{
+  height: 50px
+}
+
+/* Module complete button */
 .module-complete {
+  background-color: var(--secondary-color);
   font-weight: 700;
   font-size: 1rem;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+}
+
+/* Vertical timeline line */
+.vertical-line-left {
+  position: absolute;
+  left: 4rem;
+  top: 50px;
+  bottom: 0;
+  width: 3px;
+  background-color: var(--secondary-color);
+  border-radius: 2px;
+}
+
+/* Item icon positioned on the line */
+.item-icon {
+  position: absolute;
+  left: 3.5rem; /* center on the line */
+  top: 1.25rem;
+  font-size: 0.8rem;
+  color: #0d6efd;
+}
+
+/* Responsive adjustments */
+@media (max-width: 575.98px) {
+  .vertical-line-left { left: 1.5rem; }
+  .item-icon { left: 1rem; }
+  .accordion-item { margin-left: 2.5rem; }
+  .topic-header { font-size: 1rem; }
+  .module-header, .module-footer {
+    flex-direction: column;
+    text-align: center;
+  }
+  .module-header button, .module-footer button {
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+  .vertical-line-left { left: 2rem; }
+  .item-icon { left: 1.7rem; }
+  .accordion-item { margin-left: 3rem; }
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .vertical-line-left { left: 3rem; }
+  .item-icon { left: 2.5rem; }
+  .accordion-item { margin-left: 4rem; }
+}
+
+@media (min-width: 992px) {
+  .vertical-line-left { left: 4rem; }
+  .item-icon { left: 3.5rem; }
+  .accordion-item { margin-left: 5rem; }
+  .topic-header { font-size: 1.2rem; }
 }
