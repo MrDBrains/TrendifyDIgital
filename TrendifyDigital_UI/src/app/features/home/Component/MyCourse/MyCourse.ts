@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 })
 export class MyCourse {
   activeSection: number | null = null;
+   userAccessibleSections: number[] = [1, 2, 3, 7];
 
   sectionsData = [
     {
@@ -102,10 +103,12 @@ export class MyCourse {
     this.activeSection = this.activeSection === id ? null : id;
   }
 
-  onModuleClick(module: any) {
-    console.log('Module clicked:', module);
-    this.router.navigate(['/home/view-module'], {
-      queryParams: { id: module.id } 
-    });
+  onModuleClick(sectionId: number, module: any) {
+    if (this.userAccessibleSections.includes(sectionId)) {
+      this.router.navigate(['/home/view-module'], { queryParams: { id: module.id } });
+    } else {
+      alert('This section is not accessible for you.');
+    }
   }
+
 }

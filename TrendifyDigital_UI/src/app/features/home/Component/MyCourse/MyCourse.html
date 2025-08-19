@@ -4,10 +4,9 @@
   </h2>
 </div>
 
-
 <div class="accordion-container">
   <div class="accordion" *ngFor="let section of sectionsData" (click)="toggleSection(section.id)"
-    [class.active]="activeSection === section.id">
+       [class.active]="activeSection === section.id">
     <div class="accordion-header">
       <div class="section-label">Section {{ section.id }} -</div>
       <div class="section-title">{{ section.title }}</div>
@@ -25,14 +24,14 @@
         </div>
 
         <button class="btn-status" [ngClass]="{
-      watch: module.status === 'watch',
-      resume: module.status === 'resume'
-          }" (click)="onModuleClick(module)" >
+          watch: module.status === 'watch',
+          resume: module.status === 'resume'
+        }"
+        (click)="onModuleClick(section.id, module); $event.stopPropagation()">
           {{ module.status === 'watch' ? 'WATCH AGAIN...' : 'RESUME...' }}
           <span class="arrow">➔</span>
         </button>
       </div>
-
 
       <div *ngIf="section.levelComplete" class="level-complete">
         ✔ Level - {{ section.id }} Complete

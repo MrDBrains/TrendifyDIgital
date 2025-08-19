@@ -1,30 +1,33 @@
+<!-- 📌 Module Header -->
 <div
-  class="module-header  d-flex flex-column flex-md-row justify-content-between align-items-center p-3 mb-3 rounded shadow-sm">
-  <button class="btn btn-info btn-sm mb-2 mb-md-0">
-    <i class="bi bi-arrow-left"></i> Start Module 1
+  class="module-header d-flex flex-column flex-md-row justify-content-between align-items-center p-3 mb-3 rounded shadow-sm">
+  <button class="btn btn-info btn-sm mb-2 mb-md-0" (click)="prevModule()" [disabled]="!hasPrev()">
+    <i class="bi bi-arrow-left"></i> Previous Module
   </button>
 
   <div class="text-center mb-2 mb-md-0">
-    <h5 class="mb-0">M1 Marketing Foundation</h5>
-    <small class="text-muted">Marketing & Web Presence Foundation</small>
+    <h5 class="mb-0">
+      Module {{ currentModuleId }} - {{ getModuleTitle(currentModuleId) }}
+    </h5>
+    <small class="text-muted">Section: {{ currentSectionTitle }}</small>
   </div>
 
-  <button class="btn btn-info btn-sm">
-    Next Module 2 <i class="bi bi-arrow-right"></i>
+
+  <button class="btn btn-info btn-sm" (click)="nextModule()" [disabled]="!hasNext()">
+    Next Module <i class="bi bi-arrow-right"></i>
   </button>
 </div>
 
-
-
-<div class="timeline-container">
-  <div *ngFor="let topic of moduleTopics" class="topic-section">
+<!-- 📚 Module Topics Timeline -->
+<div *ngIf="currentModule && currentModule.length" class="timeline-container">
+  <div *ngFor="let topic of currentModule; let i = index" class="topic-section">
     <!-- 🟧 Topic Header -->
     <div class="topic-header">
       <i class="bi bi-journal-bookmark-fill me-2"></i>
-      Topic: {{ topic.id }} - {{ topic.title }}
+      Topic {{ i + 1 }} - {{ topic.title }}
     </div>
 
-    <!-- 📌 Accordion Timeline -->
+    <!-- 📌 Timeline Accordion -->
     <div class="timeline-items accordion" [attr.id]="'accordionTopic' + topic.id">
       <div class="timeline-line"></div>
 
@@ -40,7 +43,7 @@
             type="button" data-bs-toggle="collapse" [attr.data-bs-target]="'#collapse' + row.id" aria-expanded="false"
             [attr.aria-controls]="'collapse' + row.id">
             <span class="fw-bold text-primary">{{ row.title }}</span>
-            <span class="btn btn-link btn-sm ms-auto ">{{ row.type }}</span>
+            <span class="btn btn-link btn-sm ms-auto text-decoration-none">{{ row.type }}</span>
           </button>
         </h2>
 
@@ -53,30 +56,23 @@
         </div>
       </div>
     </div>
-
-
   </div>
+
+  <!-- ✅ Completion Marker -->
   <div class="topic-header">
-    <i class="bi bi-journal-bookmark-fill me-2"></i>
+    <i class="bi bi-hand-thumbs-up me-2"></i>
     Module Completed
   </div>
 </div>
 
-
-
-
-
-
-
-
-
+<!-- 📌 Module Footer -->
 <div
   class="module-footer d-flex flex-column flex-md-row justify-content-between align-items-center p-3 mt-3 rounded shadow-sm">
-  <button class="btn btn-info btn-sm mb-2 mb-md-0">
-    <i class="bi bi-arrow-left"></i> Start Module 1
+  <button class="btn btn-info btn-sm mb-2 mb-md-0" (click)="prevModule()" [disabled]="!hasPrev()">
+    <i class="bi bi-arrow-left"></i> Previous Module
   </button>
 
-  <button class="btn btn-info btn-sm">
-    Next Module 2 <i class="bi bi-arrow-right"></i>
+  <button class="btn btn-info btn-sm" (click)="nextModule()" [disabled]="!hasNext()">
+    Next Module <i class="bi bi-arrow-right"></i>
   </button>
 </div>
